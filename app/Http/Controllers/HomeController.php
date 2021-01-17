@@ -11,6 +11,11 @@ class HomeController extends Controller
     {
         return view('home.index');
     }
+
+    public function aboutus()
+    {
+        return view('home.about');
+    }
     //
     public function test($id, $name)
     {
