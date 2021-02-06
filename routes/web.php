@@ -18,7 +18,7 @@ Route::get('/aboutus', [HomeController::class, 'aboutus'])->name('aboutus');
 Route::get('/test/{id}/{name}', [HomeController::class, 'test'])->whereNumber('id')->whereAlpha('name')->name('test');
 //Menu
 Route::middleware('auth')->prefix('admin')->group(function(){
-    Route::get('/home', [\App\Http\Controllers\Admin\MenuController::class,'index'])->name('admin_home');
+    Route::get('/home', [\App\Http\Controllers\Admin\AdminController::class,'index'])->name('admin_home');
 
     Route::get('menu', [\App\Http\Controllers\Admin\MenuController::class,'index'])->name('admin_category');
     Route::get('menu/add', [\App\Http\Controllers\Admin\MenuController::class,'add'])->name('admin_category_add');
@@ -27,7 +27,19 @@ Route::middleware('auth')->prefix('admin')->group(function(){
     Route::post('menu/update/{id}', [\App\Http\Controllers\Admin\MenuController::class,'update'])->name('admin_category_update');
     Route::get('menu/delete/{id}', [\App\Http\Controllers\Admin\MenuController::class,'destroy'])->name('admin_category_delete');
     Route::get('menu/show', [\App\Http\Controllers\Admin\MenuController::class,'show'])->name('admin_category_show');
+
+//Content
+    Route::prefix('content')->group(function(){
+        Route::get('/',[\App\Http\Controllers\Admin\ContentController::class,'index'])->name('admin_content');
+        Route::get('create',[\App\Http\Controllers\Admin\ContentController::class,'create'])->name('admin_content_add');
+        Route::post('store',[\App\Http\Controllers\Admin\ContentController::class,'store'])->name('admin_content_store');
+        Route::get('edit/{id}',[\App\Http\Controllers\Admin\ContentController::class,'edit'])->name('admin_content_edit');
+        Route::post('update/{id}',[\App\Http\Controllers\Admin\ContentController::class,'update'])->name('admin_content_update');
+        Route::get('delete/{id}',[\App\Http\Controllers\Admin\ContentController::class,'destroy'])->name('admin_content_delete');
+        Route::get('show',[\App\Http\Controllers\Admin\ContentController::class,'create'])->name('admin_content_show');
+    });
 });
+
 //Admin
 Route::get('/admin', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->middleware('auth')->name('adminhome');
 //Adminlogin
