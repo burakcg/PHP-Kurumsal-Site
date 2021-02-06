@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Menu extends Model
 {
     use HasFactory;
+    protected $fillable=["parent_id","title","keywords","description","status","created_at","updated_at"];
 }

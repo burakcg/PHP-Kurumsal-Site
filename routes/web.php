@@ -23,7 +23,8 @@ Route::middleware('auth')->prefix('admin')->group(function(){
     Route::get('menu', [\App\Http\Controllers\Admin\MenuController::class,'index'])->name('admin_category');
     Route::get('menu/add', [\App\Http\Controllers\Admin\MenuController::class,'add'])->name('admin_category_add');
     Route::post('menu/create', [\App\Http\Controllers\Admin\MenuController::class,'create'])->name('admin_category_create');
-    Route::post('menu/update', [\App\Http\Controllers\Admin\MenuController::class,'update'])->name('admin_category_update');
+    Route::get('menu/edit/{id}', [\App\Http\Controllers\Admin\MenuController::class,'edit'])->name('admin_category_edit');
+    Route::post('menu/update/{id}', [\App\Http\Controllers\Admin\MenuController::class,'update'])->name('admin_category_update');
     Route::get('menu/delete/{id}', [\App\Http\Controllers\Admin\MenuController::class,'destroy'])->name('admin_category_delete');
     Route::get('menu/show', [\App\Http\Controllers\Admin\MenuController::class,'show'])->name('admin_category_show');
 });

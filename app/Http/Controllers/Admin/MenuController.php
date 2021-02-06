@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Menu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,7 +16,7 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $datalist = DB::table('categories')->get();
+        $datalist = DB::table('menus')->get();
 
         return view('admin.menu', ['datalist' => $datalist]);
 
@@ -27,7 +28,7 @@ class MenuController extends Controller
      */
     public function add()
     {
-        $datalist= DB::table('categories')->get()->where('parent_id',0);
+        $datalist= DB::table('menus')->get()->where('parent_id',0);
         return view('admin.menu_add',['datalist'=>$datalist]);
     }
     /**
@@ -37,14 +38,16 @@ class MenuController extends Controller
      */
     public function create(Request $request)
     {
-        DB::table('categories')->insert([
+        Menu::create($request->all());
+
+       /* DB::table('menus')->insert([
             'parent_id'=>$request->input('parent_id'),
             'title'=>$request->input('title'),
             'keywords'=>$request->input('keywords'),
             'description'=>$request->input('description'),
 
             'status'=>$request->input('status')
-        ]);
+        ]);*/
         return redirect()->route('admin_category');
     }
 
@@ -74,12 +77,14 @@ class MenuController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param   int $id
+
      */
     public function edit($id)
     {
-        //
+        $data = Menu::find($id);
+        $datalist=Menu::where('parent_id',0)->get();
+        return view('admin.menu_edit',['data'=>$data,'datalist'=>$datalist]);
     }
 
     /**
@@ -91,7 +96,15 @@ class MenuController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = Menu::find($id);
+
+        $data->title = $request->input('title');
+        $data->parent_id = $request->input('parent_id');
+        $data->keywords = $request->input('keywords');
+        $data->description = $request->input('description');
+        $data->status = $request->input('status');
+        $data->save();
+        return  redirect()->route('admin_category');
     }
 
     /**
@@ -102,7 +115,7 @@ class MenuController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('categories')->where('id', '=', $id)->delete();
+        DB::table('menus')->where('id', '=', $id)->delete();
         return  redirect()->route('admin_category');
     }
 
