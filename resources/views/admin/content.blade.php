@@ -25,6 +25,7 @@
                                     <th>Keyword</th>
                                     <th>Description</th>
                                     <th>Image</th>
+                                    <th>Image Gallery</th>
                                     <th>Menu_id</th>
                                     <th>Detail</th>
                                     <th>Type</th>
@@ -48,12 +49,14 @@
                                         <img src="{{Storage::url($rs->image)}}" height="100" alt="">
                                         @endif
                                     </td>
+                                    <td><a class="fas fa-arrow-right" href="{{route('admin_image_add',['content_id'=>$rs->id])}}" onclick="return !window.open(this.href, '', 'top=50 left=100 witdth=1100, height=700')"> </a></td>
                                     <td>{{$rs->menu_id}}</td>
                                     <td>{{$rs->detail}}</td>
                                     <td>{{$rs->type}}</td>
                                     <td>{{$rs->status}}</td>
-                                    <td><a href="{{route('admin_content_edit',['id'=>$rs->id])}}" class="btn btn-success btn-icon-split"> >Edit</a></td>
-                                    <td><a href="{{route('admin_content_delete',['id'=>$rs->id])}}" onclick="return confirm('Are you sure?')" >Delete</a></td>
+                                    <td><a class="fas fa-flag"  href="{{route('admin_content_edit',['id'=>$rs->id])}}"> </a></td>
+                                    <td><a  href="{{route('admin_content_delete',['id'=>$rs->id])}}" onclick="return confirm('Are you sure?')" >
+                                            <img src="{{asset('assets/admin/images')}}/delete.png"height="30"> </a></td>
                                 </tr>
                                 @endforeach
                                 </tbody>
@@ -64,10 +67,4 @@
 
 
 @endsection
-
-
-
-
-
-
 
