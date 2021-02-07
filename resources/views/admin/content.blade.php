@@ -41,9 +41,13 @@
                                 <tr>
                                     <td>{{$rs->id}}</td>
                                     <td>{{$rs->title}}</td>
-                                    <td>{{$rs->keyword}}</td>
+                                    <td>{{$rs->keywords}}</td>
                                     <td>{{$rs->description}}</td>
-                                    <td>{{$rs->image}}</td>
+                                    <td>
+                                        @if($rs->image)
+                                        <img src="{{Storage::url($rs->image)}}" height="100" alt="">
+                                        @endif
+                                    </td>
                                     <td>{{$rs->menu_id}}</td>
                                     <td>{{$rs->detail}}</td>
                                     <td>{{$rs->type}}</td>

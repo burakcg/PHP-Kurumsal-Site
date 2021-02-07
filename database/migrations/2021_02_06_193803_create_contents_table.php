@@ -22,8 +22,8 @@ class CreateContentsTable extends Migration
             $table->integer('menu_id')->nullable();
             $table->integer('user_id')->nullable();
             $table->text('detail')->nullable();
+            $table->string('type')->nullable()->default('Duyuru');
             $table->string('status',5)->nullable()->default('False');
-            $table->enum('type', ['menu', 'haber','duyuru']);
             $table->timestamps();
         });
     }

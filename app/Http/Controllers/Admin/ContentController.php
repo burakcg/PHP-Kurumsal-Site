@@ -7,6 +7,7 @@ use App\Models\Content;
 use App\Models\Menu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ContentController extends Controller
 {
@@ -46,7 +47,7 @@ class ContentController extends Controller
          $data->title = $request->input('title');
          $data->keywords = $request->input('keywords');
          $data->description = $request->input('description');
-         $data->image= $request->input('image');
+         $data->image= Storage::putFile('image',$request->file('image'));
          $data->menu_id=(int) $request->input('menu_id');
          $data->user_id=(int) Auth::id();
          $data->detail= $request->input('detail');
@@ -88,9 +89,21 @@ class ContentController extends Controller
      * @param  \App\Models\Content  $content
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Content $content)
+    public function update(Request $request, Content $content,$id)
     {
-        //
+        $data = Content::find($id);
+        $data->menu_id=$request->input('category_id');
+        $data->title=$request->input('title');
+        $data->keywords=$request->input('keywords');
+        $data->description=$request->input('description');
+        $data->status=$request->input('status');
+        $data->detail=$request->input('detail');
+        if ($request->file('image')!=null)
+        {
+            $data->image= Storage::putFile('image', $request->file('image'));
+        }
+        $data->save();
+        return redirect()->route('admin_content');
     }
 
     /**
