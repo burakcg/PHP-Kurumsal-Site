@@ -17,12 +17,9 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <form action="{{route('logout')}}" method="post" class="user">
                 @auth
-                    <a class="btn btn-primary" href="#">{{Auth::user()->name}}</a>
                     <a class="btn btn-primary" href="{{route('logout')}}">Logout</a>
                 @endauth
-                </form>
             </div>
         </div>
     </div>

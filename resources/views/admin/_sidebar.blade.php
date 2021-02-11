@@ -28,8 +28,8 @@
     </div>
 
     <li class="nav-item">
-        <a class="nav-link collapsed" href="{{route('admin_category')}}" >
-            <i class="fas fa-fw fa-cog"></i>
+        <a class="nav-link collapsed" href="{{route('admin_menu')}}" >
+            <i class="fas fa-fw fa-folder"></i>
             Menu
         </a>
 
@@ -38,7 +38,7 @@
 
     <li class="nav-item">
         <a class="nav-link collapsed" href="{{route('admin_content')}}" >
-            <i class="fas fa-fw fa-cog"></i>
+            <i class="fas fa-fw fa-table"></i>
             Content
         </a>
 
@@ -53,13 +53,13 @@
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    >
+
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span></a>
+        <a class="nav-link" href="{{route('admin_setting')}}">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Setting</span></a>
     </li>
 
     <!-- Nav Item - Tables -->

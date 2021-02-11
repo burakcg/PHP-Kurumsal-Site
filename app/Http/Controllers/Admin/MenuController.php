@@ -9,6 +9,22 @@ use Illuminate\Support\Facades\DB;
 
 class MenuController extends Controller
 {
+
+    protected $appends = [
+      'getParentsTree'
+    ];
+    public static function getParentsTree($menu, $title)
+    {
+        if ($menu->parent_id == 0)
+        {
+            return $title;
+        }
+        $parent = Menu::find($menu->parent_id);
+        $title = $parent->title.'>'. $title;
+
+        return MenuController::getParentsTree($parent, $title);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +32,7 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $datalist = DB::table('menus')->get();
-
+        $datalist = Menu::with('children')->get();
         return view('admin.menu', ['datalist' => $datalist]);
 
     }
@@ -48,7 +63,7 @@ class MenuController extends Controller
 
             'status'=>$request->input('status')
         ]);*/
-        return redirect()->route('admin_category');
+        return redirect()->route('admin_menu');
     }
 
 
@@ -104,7 +119,7 @@ class MenuController extends Controller
         $data->description = $request->input('description');
         $data->status = $request->input('status');
         $data->save();
-        return  redirect()->route('admin_category');
+        return  redirect()->route('admin_menu');
     }
 
     /**
@@ -116,7 +131,7 @@ class MenuController extends Controller
     public function destroy($id)
     {
         DB::table('menus')->where('id', '=', $id)->delete();
-        return  redirect()->route('admin_category');
+        return  redirect()->route('admin_menu');
     }
 
 }

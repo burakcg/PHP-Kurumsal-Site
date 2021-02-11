@@ -8,7 +8,7 @@
 
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Menu</h1>
-        <a class="btn btn-primary btn-icon-split" href="{{route('admin_category_add')}}" >Add Menu</a>
+        <a class="btn btn-primary btn-icon-split" href="{{route('admin_menu_add')}}" >Add Menu</a>
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
@@ -44,11 +44,11 @@
 
                                 <tr>
                                     <td>{{$rs->id}}</td>
-                                    <td>{{$rs->parent_id}}</td>
+                                    <td>{{ \App\Http\Controllers\Admin\MenuController::getParentsTree($rs, $rs->title)}}</td>
                                     <td>{{$rs->title}}</td>
                                     <td>{{$rs->status}}</td>
-                                    <td><a href="{{route('admin_category_edit',['id'=>$rs->id])}}"  >Edit</a></td>
-                                    <td><a href="{{route('admin_category_delete',['id'=>$rs->id])}}" onclick="return confirm('Are you sure?')" >Delete</a></td>
+                                    <td><a href="{{route('admin_menu_edit',['id'=>$rs->id])}}"  >Edit</a></td>
+                                    <td><a href="{{route('admin_menu_delete',['id'=>$rs->id])}}" onclick="return confirm('Are you sure?')" >Delete</a></td>
                                 </tr>
                                 @endforeach
                                 </tbody>
@@ -66,7 +66,7 @@
             $('#myTable').DataTable();
         } );
     </script>
-
+    </div>
 
 @endsection
 

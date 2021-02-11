@@ -77,6 +77,7 @@ class ContentController extends Controller
      */
     public function edit($id)
     {
+
         $data = Content::find($id);
         $datalist = Menu::all();
         return view('admin.content_edit',['data'=>$data,'datalist'=>$datalist]);
@@ -92,7 +93,7 @@ class ContentController extends Controller
     public function update(Request $request, Content $content,$id)
     {
         $data = Content::find($id);
-        $data->menu_id=$request->input('category_id');
+        $data->menu_id=$request->input('menu_id');
         $data->title=$request->input('title');
         $data->keywords=$request->input('keywords');
         $data->description=$request->input('description');

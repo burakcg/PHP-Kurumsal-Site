@@ -8,17 +8,17 @@
 
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Menu Add</h1>
-        <form role="form" action="{{route('admin_category_create')}}" method="post">
+        <form role="form" action="{{route('admin_menu_create')}}" method="post">
 
             @csrf
             <div class="form-group">
 
 
                 <select class="form-control select2" name="parent_id" style="width: 100%;">
-                    <option value="0" selected="selected">Main Category</option>
+                    <option value="0" selected="selected">Main Menu</option>
 
                     @foreach($datalist as $rs)
-                        <option value="{{$rs->id}}">{{$rs->title}}</option>
+                        <option value="{{$rs->id}}">{{ \App\Http\Controllers\Admin\MenuController::getParentsTree($rs, $rs->title)}}</option>
                     @endforeach
                 </select>
             </div>
@@ -49,7 +49,7 @@
                 </select>
 
             </div>
-            <button type="submit" class="btn btn-primary">Add Category</button>
+            <button type="submit" class="btn btn-primary">Add menu</button>
 
         </form>
 

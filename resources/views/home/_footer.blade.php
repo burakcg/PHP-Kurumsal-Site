@@ -1,3 +1,6 @@
+@php
+    $setting = \App\Http\Controllers\HomeController::getsetting()
+@endphp
 <!-- Footer section -->
 <footer class="footer-section">
     <div class="container">
@@ -12,19 +15,19 @@
         </a>
         <ul class="main-menu footer-menu">
             <li><a href="">Home</a></li>
-            <li><a href="">Games</a></li>
-            <li><a href="">Reviews</a></li>
-            <li><a href="">News</a></li>
+            <li><a href="{{route('aboutus')}}" target="_blank">About Us</a></li>
+            <li><a href="">Referances</a></li>
             <li><a href="">Contact</a></li>
         </ul>
         <div class="footer-social d-flex justify-content-center">
-            <a href="#"><i class="fa fa-pinterest"></i></a>
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-dribbble"></i></a>
-            <a href="#"><i class="fa fa-behance"></i></a>
+            @if($setting->facebook !=null) <a href="{{$setting->facebook}}" target="_blank"><i class="fa fa-facebook"></i></a> @endif
+                @if($setting->instagram !=null) <a href="{{$setting->instagram}}" target="_blank"><i class="fa fa-instagram"></i></a> @endif
+                @if($setting->pinterest !=null) <a href="{{$setting->pinterest}}" target="_blank"><i class="fa fa-pinterest"></i></a> @endif
+                @if($setting->twitter !=null) <a href="{{$setting->twitter}}" target="_blank"><i class="fa fa-twitter"></i></a> @endif
+                @if($setting->dribbble !=null) <a href="{{$setting->dribbble}}" target="_blank"><i class="fa fa-dribbble"></i></a> @endif
+                @if($setting->youtube !=null) <a href="{{$setting->youtube}}" target="_blank"><i class="fa fa-youtube"></i></a> @endif
         </div>
-        <div class="copyright"><a href="">Colorlib</a> 2018 @ All rights reserved</div>
+        <div class="copyright"><a href="">{{$setting->company}}</a> 2020 @ All rights reserved</div>
     </div>
 </footer>
 <!-- Footer section end -->

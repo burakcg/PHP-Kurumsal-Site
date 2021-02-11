@@ -1,10 +1,9 @@
 @extends('layouts.home')
 
-@section('title', 'Laravel Kurumsal Site')
-@section('description')
-    Bir numaralı oyun magazin sitesi
+@section('title', $setting->title)
+@section('description'){{$setting->description}}
 @endsection
-@section('keywords','game')
+@section('keywords', $setting->keywords)
 
 @section('content')
     @include('home._hero')

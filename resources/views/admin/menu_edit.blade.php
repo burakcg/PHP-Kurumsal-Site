@@ -8,8 +8,7 @@
 
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Menu Add</h1>
-        Add Category Form
-        <form role="form" action="{{route('admin_category_update',['id'=>$data->id])}}" method="post">
+        <form role="form" action="{{route('admin_menu_update',['id'=>$data->id])}}" method="post">
 
             @csrf
             <div class="form-group">
@@ -18,7 +17,9 @@
                 <select class="form-control select2" name="parent_id" style="width: 100%;">
                     <option value="0">Main Category</option>
                     @foreach($datalist as $rs)
-                        <option value="{{$rs->id}}" @if ($rs->id==$data->parent_id) selected="selected" @endif> {{$rs->title}}</option>
+                        <option value="{{$rs->id}}" @if ($rs->id==$data->parent_id) selected="selected" @endif>
+                            {{ \App\Http\Controllers\Admin\MenuController::getParentsTree($rs,$rs->title)}}
+                        </option>
                     @endforeach
                 </select>
             </div>
