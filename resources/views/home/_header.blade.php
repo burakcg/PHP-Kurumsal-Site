@@ -1,4 +1,6 @@
-
+@php
+    $setting = \App\Http\Controllers\HomeController::getsetting()
+@endphp
 <!-- Page Preloder -->
 <div id="preloder">
     <div class="loader"></div>
@@ -29,9 +31,10 @@
                        <li>
                         <a href="">{{ Auth::user()->name }}</a>
                            <ul class="sub-menu">
-                               <li><a href="/login">Profile</a></li>
+                               <li><a href="{{route('myprofile')}}">Profile</a></li>
                                <li><a href="/login">Message</a></li>
                                <li><a href="/login">Comment</a></li>
+                               <li><a href="/login">Favorite</a></li>
                                <li><a href="{{route('logout')}}">Logout</a></li>
                            </ul>
                         </li>
