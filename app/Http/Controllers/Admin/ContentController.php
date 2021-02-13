@@ -80,7 +80,7 @@ class ContentController extends Controller
 
         $data = Content::find($id);
         $datalist = Menu::all();
-        return view('admin.content_edit',['data'=>$data,'datalist'=>$datalist]);
+        return view('admin.content_edit', ['content'=>$data,'datalist'=>$datalist]);
     }
 
     /**

@@ -11,7 +11,7 @@
             @if(!$rs->children->isEmpty())
                 <ul class="sub-menu">
                     @foreach($rs->children as $child)
-                    <li><a href="{{route($child->route)}}">{{$child->title}}</a></li>
+                    <li><a href="{{route($child->route, $child->id)}}">{{$child->title}}</a></li>
                     @endforeach
                 </ul>
             @endif

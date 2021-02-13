@@ -20,7 +20,7 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Content Update</h1>
         <!-- Form Start -->
-    <form role="form" action="{{route('admin_content_update',['id'=>$data->id])}}" method="post" enctype="multipart/form-data">
+    <form role="form" action="{{route('admin_content_update',['id'=>$content->id])}}" method="post" enctype="multipart/form-data">
 
         @csrf
         <div class="form-group">
@@ -37,35 +37,35 @@
 
         <div class="form-group">
             <label>Title</label>
-            <input type="text" name="title" value="{{$data->title}}" class="form-control" >
+            <input type="text" name="title" value="{{$content->title}}" class="form-control" >
         </div>
 
         <div class="form-group">
             <label>Keywords</label>
-            <input type="text" name="keywords" value="{{$data->keywords}}" class="form-control" >
+            <input type="text" name="keywords" value="{{$content->keywords}}" class="form-control" >
         </div>
 
         <div class="form-group">
             <label>Description</label>
-            <input type="text" name="description" value="{{$data->description}}" class="form-control" >
+            <input type="text" name="description" value="{{$content->description}}" class="form-control" >
         </div>
 
         <div class="form-group">
             <label>image</label>
-            <input type="file" name="image" value="{{$data->image}}" class="form-control" >
-            @if($data->image)
-                <img src="{{Storage::url($data->image)}}" height="30" alt="">
+            <input type="file" name="image" value="{{$content->image}}" class="form-control" >
+            @if($content->image)
+                <img src="{{Storage::url($content->image)}}" height="30" alt="">
             @endif
         </div>
 
         <div class="form-group">
             <label>user_id</label>
-            <input type="number" name="user_id" value="{{$data->user_id}}" class="form-control" >
+            <input type="number" name="user_id" value="{{$content->user_id}}" class="form-control" >
         </div>
 
         <div class="form-group">
             <label>About Game</label>
-            <textarea id="summernote" name="detail" > {{$data->detail}}</textarea>
+            <textarea id="summernote" name="detail" > {{$content->detail}}</textarea>
             <script>
                 $('#summernote').summernote({
                     placeholder: 'Oyunun ayrıntılarını bu kısıma girebilirsiniz.',
@@ -88,7 +88,7 @@
         <div class="form-group">
             <label>Type</label>
             <select class="form-control select2" id="type" name="type" style="width: 100%;">
-                <option selected="selected">{{$data->type}}</option>
+                <option selected="selected">{{$content->type}}</option>
                 <option>Etkinlik</option>
                 <option>Haber</option>
                 <option>Duyuru</option>
@@ -98,7 +98,7 @@
         <div class="form-group">
             <label>Status</label>
             <select class="form-control select2" name="status" style="width: 100%;">
-                <option selected="selected">{{$data->status}}</option>
+                <option selected="selected">{{$content->status}}</option>
                 <option >False</option>
                 <option>True</option>
             </select>

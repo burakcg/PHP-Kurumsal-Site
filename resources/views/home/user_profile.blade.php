@@ -18,7 +18,7 @@
             <div class="hero-item set-bg d-flex align-items-center justify-content-center text-center" data-setbg="{{asset('assets/homeT/img/slider-bg-2.jpg')}}">
                 <div class="container">
                 @include('profile.showx')
-
+                </div>
             </div>
         </div>
     </section>

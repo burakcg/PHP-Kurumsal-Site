@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Content;
+use App\Models\Image;
 use App\Models\Menu;
 use App\Models\Setting;
 use Illuminate\Http\Request;
@@ -9,6 +11,11 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     //
+    public static function sliderContents()
+    {
+        return Image::take(3)->get();
+    }
+
     public static function menulist()
     {
         return Menu::where('parent_id', '=', 0)->with('children')->get();
@@ -25,7 +32,13 @@ class HomeController extends Controller
     public function index()
     {
         $setting =Setting::first();
-        return view('home.index',['setting' => $setting]);
+        $slider = Content::select('title','image')->limit(4)->get();
+        $data = [
+          'setting'=>$setting,
+          'slider'=>$slider,
+          'page'=>'home'
+        ];
+        return view('home.index',$data);
     }
 
     public function aboutus()
@@ -55,5 +68,33 @@ class HomeController extends Controller
         }
         */
     }
+
+    public function games($id){
+        $menu = Menu::find($id);
+        $games = Content::Where('menu_id', $id)->get();
+        return view('home.games',['games' => $games, 'menu' => $menu]);
+    }
+
+    public function videos($id){
+        $data = Content::Where('menu_id', $id)->get();
+        dd($data);
+        exit();
+    }
+
+    public function game_detail($id){
+        return view("home.detail", [
+            'game' => Content::find($id)
+        ]);
+
+    }
+
+
+    public function user_comments() {
+        return view("home.user_comments", [
+            'game' => null
+        ]);
+
+    }
+
 
 }

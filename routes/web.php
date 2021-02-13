@@ -15,7 +15,17 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/aboutus', [HomeController::class, 'aboutus'])->name('aboutus');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/referances', [HomeController::class, 'referances'])->name('referances');
+Route::get('/sendmessage', [HomeController::class, 'sendmessage'])->name('sendmessage');
+Route::get('/contents/{id}', [HomeController::class, 'contents'])->name('contents');
+Route::get('/games/{id}', [HomeController::class, 'games'])->name('games');
+Route::get('/videos/{id}', [HomeController::class, 'videos'])->name('videos');
+Route::get('/game-detail/{id}', [HomeController::class, 'game_detail'])->name('gameDetail');
 
+
+Route::get('/comment/index', [\App\Http\Controllers\CommentController::class, 'index'])->name('comment');
+Route::post('/comment', [\App\Http\Controllers\CommentController::class, 'comment'])->name('addComment');
+Route::get('/user-comments', [\App\Http\Controllers\HomeController::class, 'user_comments'])->name('userComments');
+Route::get('/user-comment-delete/{id}', [\App\Http\Controllers\CommentController::class, 'destroy'])->name('userCommentsDelete');
 //Test
 Route::get('/test/{id}/{name}', [HomeController::class, 'test'])->whereNumber('id')->whereAlpha('name')->name('test');
 //Menu
@@ -39,6 +49,11 @@ Route::middleware('auth')->prefix('admin')->group(function(){
         Route::post('update/{id}',[\App\Http\Controllers\Admin\ContentController::class,'update'])->name('admin_content_update');
         Route::get('delete/{id}',[\App\Http\Controllers\Admin\ContentController::class,'destroy'])->name('admin_content_delete');
         Route::get('show',[\App\Http\Controllers\Admin\ContentController::class,'create'])->name('admin_content_show');
+    });
+    Route::prefix('comments')->group(function(){
+        Route::get('/',[\App\Http\Controllers\Admin\ContentCommentController::class,'index'])->name('admin_comment');
+        Route::get('validate/{id}',[\App\Http\Controllers\Admin\ContentCommentController::class,'validateComment'])->name('admin_comment_validate');
+        Route::get('delete/{id}',[\App\Http\Controllers\Admin\ContentCommentController::class,'destroy'])->name('admin_comment_delete');
     });
     //Image Gallery
     Route::prefix('image')->group(function(){

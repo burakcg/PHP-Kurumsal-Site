@@ -20,8 +20,8 @@
         </div>
         <div class="header-bar-warp d-flex">
             <!-- site logo -->
-            <a href="{{route('home')}}" class="site-logo">
-                <img src="{{asset('assets')}}/homeT/img/logo.png" alt="">
+            <a href="{{route('home')}}"  class="site-logo">
+                <img src="{{asset('assets')}}/homeT/images/bvb.jpg"  height="40" alt="">
             </a>
             <nav class="top-nav-area w-100">
 
