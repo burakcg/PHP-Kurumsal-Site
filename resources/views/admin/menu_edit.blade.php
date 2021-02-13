@@ -40,6 +40,10 @@
                 <input type="text" name="description" value="{{$data->description}}" class="form-control" >
             </div>
 
+            <div class="form-group">
+                <label>Route</label>
+                <input type="text" name="route" class="form-control" >
+            </div>
 
             <div class="form-group">
                 <label>Status</label>

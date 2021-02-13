@@ -21,7 +21,7 @@
         <div class="header-bar-warp d-flex">
             <!-- site logo -->
             <a href="{{route('home')}}"  class="site-logo">
-                <img src="{{asset('assets')}}/homeT/images/bvb.jpg"  height="40" alt="">
+                <img src="{{asset('assets')}}/homeT/images/bvb.jpg" alt="logo" style="height: 40px!important;">
             </a>
             <nav class="top-nav-area w-100">
 
@@ -33,7 +33,7 @@
                            <ul class="sub-menu">
                                <li><a href="{{route('myprofile')}}">Profile</a></li>
                                <li><a href="/login">Message</a></li>
-                               <li><a href="/login">Comment</a></li>
+                               <li><a href="{{route('userComments')}}">Comment</a></li>
                                <li><a href="/login">Favorite</a></li>
                                <li><a href="{{route('logout')}}">Logout</a></li>
                            </ul>

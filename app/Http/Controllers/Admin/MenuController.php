@@ -53,7 +53,14 @@ class MenuController extends Controller
      */
     public function create(Request $request)
     {
-        Menu::create($request->all());
+        Menu::create($request->only([
+            'parent_id',
+            'title',
+            'keywords',
+            'description',
+            'status',
+            'route'
+        ]));
 
        /* DB::table('menus')->insert([
             'parent_id'=>$request->input('parent_id'),

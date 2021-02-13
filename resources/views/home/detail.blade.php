@@ -32,16 +32,18 @@
                     <div id="stickySidebar">
                         <div class="widget-item">
                             <div class="rating-widget">
-                                <h4 class="widget-title">Ratings</h4>
+                                <h4 class="widget-title">Reviews</h4>
                                 <ul>
-                                    <li>Price<span>3.5/5</span></li>
-                                    <li>Graphics<span>4.5/5</span></li>
-                                    <li>Levels<span>3.5/5</span></li>
-                                    <li>Levels<span>4.5/5</span></li>
-                                    <li>Dificulty<span>4.5/5</span></li>
+                                    @foreach($game->reviews as $review)
+                                    <li><a style="color: purple!important; font-weight: 700!important;" href="{{route('viewUserReview', $review->id)}}">{{$review->title}}</a></li>
+                                    @endforeach
                                 </ul>
                                 <div class="rating">
-                                    <h5><i>Rating</i><span>4.5</span> / 5</h5>
+                                    @auth
+                                        <h5 style="font-size: 18px!important;">
+                                            <a href="{{route('createUserReview', $game->id)}}">Make Review</a>
+                                        </h5>
+                                    @endauth
                                 </div>
                             </div>
                         </div>
@@ -56,27 +58,32 @@
     <section class="game-author-section">
         <div class="container">
             <div class="row">
-                @foreach($game->comments()->where('validated', true)->get() as $comment)
-                <div class="col-md-12" style="margin-top: 10px">
-                    <div class="game-author-info">
-                        <h4>Comment by: {{$comment->user->name}}</h4>
-                        <p>{{$comment->text}}</p>
-                    </div>
-                </div>
-                @endforeach
-                <div class="col-md-12" style="margin-top: 30px">
-                    <div class="game-author-info">
-                        <h4>Write a comment:</h4>
-                        <!--comment-->
-                        <form action="{{route('addComment')}}" method="POST">
-                            @csrf
-                            <input type="hidden" name="content_id" value="{{$game->id}}" />
-                            <input type="hidden" name="user_id" value="{{\Illuminate\Support\Facades\Auth::user()->id}}" />
-                            <div class="form-group">
-                                <textarea name="text" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <div class="col-md-12">
+                    <div class="row">
+                        <h2>Comments</h2>
+                        @foreach($game->comments()->where('validated', true)->get() as $comment)
+                            <div class="col-md-12" style="margin-top: 10px">
+                                <div class="game-author-info">
+                                    <h4>Comment by: {{$comment->user->name}}</h4>
+                                    <p>{{$comment->text}}</p>
+                                </div>
                             </div>
-                            <button class="btn btn-primary mb-2" type="submit">Comment</button>
-                        </form>
+                        @endforeach
+                        <div class="col-md-12" style="margin-top: 30px">
+                            <div class="game-author-info">
+                                <h4>Write a comment:</h4>
+                                <!--comment-->
+                                <form action="{{route('addComment')}}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="content_id" value="{{$game->id}}" />
+                                    <input type="hidden" name="user_id" value="{{\Illuminate\Support\Facades\Auth::user()->id}}" />
+                                    <div class="form-group">
+                                        <textarea name="text" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    </div>
+                                    <button class="btn btn-primary mb-2" type="submit">Comment</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

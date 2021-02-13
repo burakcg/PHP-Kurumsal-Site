@@ -19,4 +19,8 @@ class Content extends Model
         return $this->hasMany(ContentComments::class, 'content_id');
     }
 
+    public function reviews()
+    {
+        return $this->hasMany(UserReview::class, 'content_id');
+    }
 }

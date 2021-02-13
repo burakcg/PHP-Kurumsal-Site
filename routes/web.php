@@ -26,6 +26,12 @@ Route::get('/comment/index', [\App\Http\Controllers\CommentController::class, 'i
 Route::post('/comment', [\App\Http\Controllers\CommentController::class, 'comment'])->name('addComment');
 Route::get('/user-comments', [\App\Http\Controllers\HomeController::class, 'user_comments'])->name('userComments');
 Route::get('/user-comment-delete/{id}', [\App\Http\Controllers\CommentController::class, 'destroy'])->name('userCommentsDelete');
+
+Route::get('/new-review/{id}', [\App\Http\Controllers\ReviewController::class, 'create'])->name('createUserReview');
+Route::get('/review-view/{id}', [\App\Http\Controllers\ReviewController::class, 'view'])->name('viewUserReview');
+Route::post('/review', [\App\Http\Controllers\ReviewController::class, 'review'])->name('storeUserReview');
+Route::get('/review-delete/{id}', [\App\Http\Controllers\ReviewController::class, 'destroy'])->name('deleteUserReview');
+
 //Test
 Route::get('/test/{id}/{name}', [HomeController::class, 'test'])->whereNumber('id')->whereAlpha('name')->name('test');
 //Menu
