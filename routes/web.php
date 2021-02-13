@@ -84,6 +84,7 @@ Route::get('/user/login', [\App\Http\Controllers\Admin\AdminController::class, '
 Route::post('/admin/logincheck', [\App\Http\Controllers\Admin\AdminController::class, 'logincheck'])->name('logincheck');
 //logout
 Route::get('/logout', [\App\Http\Controllers\Admin\AdminController::class, 'logout'])->name('logout');
+Route::get('/user-logout', [HomeController::class, 'logout'])->name('userLogout');
 //User
 Route::middleware('auth')->prefix('myuser')->namespace('myuser')->group(function(){
 

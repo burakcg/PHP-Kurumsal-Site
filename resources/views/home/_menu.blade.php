@@ -17,4 +17,12 @@
             @endif
         </li>
     @endforeach
+    <li>
+        <a href="#">Game Reviews</a>
+        <ul class="sub-menu">
+            @foreach(\App\Models\UserReview::all() as $review)
+                <li><a href="{{route('viewUserReview', $review->id)}}">{{$review->content->title}} - {{$review->title}}</a></li>
+            @endforeach
+        </ul>
+    </li>
 </ul>

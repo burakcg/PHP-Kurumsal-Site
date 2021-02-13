@@ -35,7 +35,7 @@
                                <li><a href="/login">Message</a></li>
                                <li><a href="{{route('userComments')}}">Comment</a></li>
                                <li><a href="/login">Favorite</a></li>
-                               <li><a href="{{route('logout')}}">Logout</a></li>
+                               <li><a href="{{route('userLogout')}}">Logout</a></li>
                            </ul>
                         </li>
                         </ul>

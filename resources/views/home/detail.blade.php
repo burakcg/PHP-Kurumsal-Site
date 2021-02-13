@@ -69,6 +69,7 @@
                                 </div>
                             </div>
                         @endforeach
+                        @auth
                         <div class="col-md-12" style="margin-top: 30px">
                             <div class="game-author-info">
                                 <h4>Write a comment:</h4>
@@ -84,6 +85,7 @@
                                 </form>
                             </div>
                         </div>
+                        @endauth
                     </div>
                 </div>
             </div>

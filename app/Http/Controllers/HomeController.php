@@ -7,10 +7,16 @@ use App\Models\Image;
 use App\Models\Menu;
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
     //
+    public static function allContent()
+    {
+        return Content::all();
+    }
+
     public static function sliderContents()
     {
         return Image::take(3)->get();
@@ -96,5 +102,14 @@ class HomeController extends Controller
 
     }
 
+    public function logout(Request $request)
+    {
+        Auth::logout();
 
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/login');
+    }
 }
