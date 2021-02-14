@@ -96,9 +96,12 @@ class HomeController extends Controller
 
 
     public function user_comments() {
-        return view("home.user_comments", [
-            'game' => null
-        ]);
+        return view("home.user_comments");
+
+    }
+
+    public function user_reviews() {
+        return view("home.user_reviews");
 
     }
 

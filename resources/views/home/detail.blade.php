@@ -34,7 +34,7 @@
                             <div class="rating-widget">
                                 <h4 class="widget-title">Reviews</h4>
                                 <ul>
-                                    @foreach($game->reviews as $review)
+                                    @foreach($game->reviews()->where('validated', true)->get() as $review)
                                     <li><a style="color: purple!important; font-weight: 700!important;" href="{{route('viewUserReview', $review->id)}}">{{$review->title}}</a></li>
                                     @endforeach
                                 </ul>

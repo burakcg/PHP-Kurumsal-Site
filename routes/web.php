@@ -9,6 +9,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 Route::redirect('/anasayfa', '/home')->name('anasayfa');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -27,6 +29,8 @@ Route::post('/comment', [\App\Http\Controllers\CommentController::class, 'commen
 Route::get('/user-comments', [\App\Http\Controllers\HomeController::class, 'user_comments'])->name('userComments');
 Route::get('/user-comment-delete/{id}', [\App\Http\Controllers\CommentController::class, 'destroy'])->name('userCommentsDelete');
 
+Route::get('/user-reviews', [\App\Http\Controllers\HomeController::class, 'user_reviews'])->name('user_reviews');
+Route::get('/review/index', [\App\Http\Controllers\ReviewController::class, 'index'])->name('review');
 Route::get('/new-review/{id}', [\App\Http\Controllers\ReviewController::class, 'create'])->name('createUserReview');
 Route::get('/review-view/{id}', [\App\Http\Controllers\ReviewController::class, 'view'])->name('viewUserReview');
 Route::post('/review', [\App\Http\Controllers\ReviewController::class, 'review'])->name('storeUserReview');
@@ -60,6 +64,12 @@ Route::middleware('auth')->prefix('admin')->group(function(){
         Route::get('/',[\App\Http\Controllers\Admin\ContentCommentController::class,'index'])->name('admin_comment');
         Route::get('validate/{id}',[\App\Http\Controllers\Admin\ContentCommentController::class,'validateComment'])->name('admin_comment_validate');
         Route::get('delete/{id}',[\App\Http\Controllers\Admin\ContentCommentController::class,'destroy'])->name('admin_comment_delete');
+    });
+
+    Route::prefix('review')->group(function(){
+        Route::get('/',[\App\Http\Controllers\Admin\ContentReviewController::class,'index'])->name('admin_review');
+        Route::get('validate/{id}',[\App\Http\Controllers\Admin\ContentReviewController::class,'validateComment'])->name('admin_review_validate');
+        Route::get('delete/{id}',[\App\Http\Controllers\Admin\ContentReviewController::class,'destroy'])->name('admin_review_delete');
     });
     //Image Gallery
     Route::prefix('image')->group(function(){
