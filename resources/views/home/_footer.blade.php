@@ -10,14 +10,14 @@
         <div class="footer-right-pic">
              <img src="{{asset('assets')}}/homeT/img/footer-right-pic.png" alt="">
         </div>
-        <a href="#" class="footer-logo">
-            <img src="{{asset('assets')}}/homeT/img/logo.png" alt="">
+        <a href="{{route('home')}}" class="footer-logo">
+            <img src="{{asset('assets')}}/homeT/images/bvb.jpg" alt="logo" style="height: 40px!important;">
         </a>
         <ul class="main-menu footer-menu">
             <li><a href="">Home</a></li>
-            <li><a href="{{route('aboutus')}}" target="_blank">About Us</a></li>
-            <li><a href="">Referances</a></li>
-            <li><a href="">Contact</a></li>
+            <li><a href="{{route('contact')}}" target="_blank">Contact</a></li>
+            <li><a href="{{route('referances')}}" target="_blank">Referances</a></li>
+            <li><a href="{{route('aboutus')}}">About Us</a></li>
         </ul>
         <div class="footer-social d-flex justify-content-center">
             @if($setting->facebook !=null) <a href="{{$setting->facebook}}" target="_blank"><i class="fa fa-facebook"></i></a> @endif

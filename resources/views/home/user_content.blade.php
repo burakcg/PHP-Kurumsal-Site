@@ -3,9 +3,9 @@
 @section('title', 'Laravel Kurumsal Site')
 
 @section('content')
-    <section class="games-single-page" style="height: 750px!important; padding-top: 200px!important;">
+    <section class="games-single-page" style="height: 1550px!important; padding-top: 200px!important;" style="height: 750px!important; padding-top: 200px!important;">
 
-        <div class="container">
+        <div class="container" >
             <h3>İçerikler</h3>
             <a class="btn-success " href="{{route("user_content_create")}}" style="margin:5px;"> İçerik Ekle</a>
 

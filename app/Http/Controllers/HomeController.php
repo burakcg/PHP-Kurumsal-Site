@@ -49,17 +49,17 @@ class HomeController extends Controller
 
     public function aboutus()
     {
-        return view('home.about');
+        return view('home.aboutus');
     }
     //
 
     public function contact()
     {
-        return view('home.about');
+        return view('home.contact');
     }
     public function referances()
     {
-        return view('home.about');
+        return view('home.referances');
     }
 
     public function test($id, $name)

@@ -149,7 +149,7 @@
                                 <input type="text" name="company" value="{{$data->company}}" class="form-control" >
                             </div>
                             <div class="form-group">
-                                <label>Address</label>
+                                <label>Adress</label>
                                 <input type="text" name="address" value="{{$data->address}}" class="form-control" >
                             </div>
                             <div class="form-group">
@@ -169,7 +169,7 @@
                             <h5>Referanslar</h5>
                             <div class="form-group">
                                 <label>Referances</label>
-                                <textarea id="summernote3" name="referances" value="{{$data->referances}}" class="form-control" ></textarea>
+                                <textarea id="summernote3" name="references" value="{{$data->references}}" class="form-control" ></textarea>
                             </div>
                             <script>     $('#summernote3').summernote({
                                     tabsize: 2,
