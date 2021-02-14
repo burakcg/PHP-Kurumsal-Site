@@ -43,6 +43,13 @@
         </a>
 
     </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="{{route('admin_user')}}">
+            <i class="fas fa-fw fa-user"></i>
+            Users
+        </a>
+
+    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider">

@@ -5,7 +5,7 @@
             <li><a href="{{route('myprofile')}}">My Profile</a></li>
             <li><a href="{{route('userComments')}}">My Comments</a></li>
             <li><a href="{{route('user_reviews')}}">My Reviews</a></li>
-            <li><a href="">My Favorite</a></li>
+            <li><a href="/myuser/content">My Content</a></li>
             <li><a href="{{route('logout')}}">Logout</a></li>
         </ul>
     </div>

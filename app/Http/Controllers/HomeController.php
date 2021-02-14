@@ -82,9 +82,14 @@ class HomeController extends Controller
     }
 
     public function videos($id){
-        $data = Content::Where('menu_id', $id)->get();
-        dd($data);
-        exit();
+        $menu = Menu::find($id);
+        $games = Content::Where('menu_id', $id)->get();
+        return view('home.games',['games' => $games, 'menu' => $menu]);
+    }
+    public function news($id){
+        $menu = Menu::find($id);
+        $games = Content::Where('menu_id', $id)->get();
+        return view('home.games',['games' => $games, 'menu' => $menu]);
     }
 
     public function game_detail($id){

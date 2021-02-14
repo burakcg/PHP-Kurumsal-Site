@@ -7,7 +7,7 @@
 
     @foreach($parentMenus as $rs)
         <li>
-            <a href="{{route($rs->route)}}">{{$rs->title}}</a>
+            <a href="">{{$rs->title}}</a>
             @if(!$rs->children->isEmpty())
                 <ul class="sub-menu">
                     @foreach($rs->children as $child)

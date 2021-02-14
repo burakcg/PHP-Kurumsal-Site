@@ -68,4 +68,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserReview::class, 'user_id');
     }
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
 }
